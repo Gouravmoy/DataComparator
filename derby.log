@@ -1,13 +1,13 @@
 ----------------------------------------------------------------
-Wed May 18 14:19:55 IST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-c30e-9aa7-0000070bc370 
-on database directory C:\DataComparator2.0\DataComparator\simpleDb with class loader sun.misc.Launcher$AppClassLoader@4e0e2f2a 
-Loaded from file:/C:/Users/lenovo/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+Wed May 18 15:00:35 IST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-c333-d98e-000007092480 
+on database directory C:\Workspaces\DataComparator\DataComparator\simpleDb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/M1026352/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_66-b18
-user.dir=C:\DataComparator2.0\DataComparator
-os.name=Windows 7
+java.runtime.version=1.8.0_92-b14
+user.dir=C:\Workspaces\DataComparator\DataComparator
+os.name=Windows 10
 os.arch=amd64
-os.version=6.1
+os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
