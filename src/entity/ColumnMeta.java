@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,7 +36,11 @@ public class ColumnMeta {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "queryColumnMeta")
 	List<Query> queryList;
-	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "fileColumnMeta")
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "fileColumnMeta")
 	Set<Files> files;
+
+	@OneToOne
+	@PrimaryKeyJoinColumn
+	Project project;
 }
