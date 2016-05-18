@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -9,8 +7,6 @@ import javax.persistence.Persistence;
 
 import org.apache.log4j.Logger;
 
-import entity.Department;
-import entity.Employee;
 
 public class JpaTest {
 
@@ -34,18 +30,18 @@ public class JpaTest {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
-			test.createEmployees();
+			//test.createEmployees();
 		} catch (Exception e) {
 			logger.error(e);
 		}
 		tx.commit();
 
-		test.listEmployees();
+		//test.listEmployees();
 
 		System.out.println(".. done");
 	}
 
-	private void createEmployees() {
+	/*private void createEmployees() {
 		int numOfEmployees = manager
 				.createQuery("Select a From Employee a", Employee.class)
 				.getResultList().size();
@@ -66,6 +62,6 @@ public class JpaTest {
 		for (Employee next : resultList) {
 			System.out.println("next employee: " + next);
 		}
-	}
+	}*/
 
 }
