@@ -1,7 +1,8 @@
 package entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,5 +36,5 @@ public class ColumnMeta {
 	List<Query> queryList;
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy = "fileColumnMeta")
-	List<Files> files;
+	Set<Files> files;
 }

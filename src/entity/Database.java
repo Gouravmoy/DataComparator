@@ -1,6 +1,7 @@
 package entity;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table
-public class Database {
+public class Database implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue

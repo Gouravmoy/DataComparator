@@ -1,7 +1,7 @@
 package entity;
 
-import java.sql.Date;
-import java.util.List;
+import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +42,6 @@ public class Query {
 	Date lastUpdtTS;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "query")
-	List<LookUpCols> lookUpCols;
+	Set<LookUpCols> lookUpCols;
 
 }
