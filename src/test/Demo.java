@@ -1,21 +1,29 @@
 package test;
 
+import org.apache.log4j.Logger;
+
+import dao.DatabaseDao;
 import dao.GenericDAO;
+import daoImpl.DatabaseDAOImpl;
 import daoImpl.GenericDAOImpl;
 import entity.ColumnMeta;
 import entity.DBTypes;
-import entity.DataBase_CompositeID;
 import entity.Database;
+import exceptions.PersistException;
 
 public class Demo {
 
 	public static void main(String[] args) {
-		Database db = new Database(new DataBase_CompositeID("DBNAME", 17),
-				"sName", "U", "P", "P", DBTypes.MYSQL);
+		Logger logger = Logger.getLogger("Main");
+		Database db = new Database("DB1", "sName", "U", "P", "P", DBTypes.MYSQL);
+		logger.info("Inserting Entity " + db);
 
-		GenericDAO<Database, Long> dao = new GenericDAOImpl<Database, Long>();
-		dao.save(db);
-		dao.readAll(Database.class);
+		DatabaseDao databaseDao = new DatabaseDAOImpl();
+		try {
+			databaseDao.saveDatabse(db);
+		} catch (PersistException e) {
+			logger.error(e);
+		}
 
 		ColumnMeta columnMeta = new ColumnMeta();
 		columnMeta.setColNames("C");
@@ -24,5 +32,4 @@ public class Demo {
 		dao1.save(columnMeta);
 
 	}
-
 }

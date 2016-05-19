@@ -1,18 +1,11 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Wed May 18 16:26:02 IST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-c382-1322-000006e6e310 
+Thu May 19 16:04:17 IST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-c894-86d3-000006e59000 
 on database directory C:\WorkSpaces\DataComparator2.0\DataComparator\simpleDb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/m1026335/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
-=======
-Wed May 18 20:42:27 IST 2016:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-c46c-d5c3-000006c27170 
-on database directory C:\Workspaces\DataComparator\DataComparator\simpleDB with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Loaded from file:/C:/Users/M1026352/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
->>>>>>> branch 'master' of https://github.com/Gouravmoy/DataComparator.git
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_92-b14
-user.dir=C:\Workspaces\DataComparator\DataComparator
+user.dir=C:\WorkSpaces\DataComparator2.0\DataComparator
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
