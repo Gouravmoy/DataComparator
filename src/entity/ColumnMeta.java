@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -21,7 +22,7 @@ import javax.persistence.TemporalType;
 public class ColumnMeta {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long idColumnMeta;
 
 	@Column
@@ -43,4 +44,85 @@ public class ColumnMeta {
 	@OneToOne
 	@PrimaryKeyJoinColumn
 	Project project;
+
+	public Long getIdColumnMeta() {
+		return idColumnMeta;
+	}
+
+	public void setIdColumnMeta(Long idColumnMeta) {
+		this.idColumnMeta = idColumnMeta;
+	}
+
+	public String getColNames() {
+		return colNames;
+	}
+
+	public void setColNames(String colNames) {
+		this.colNames = colNames;
+	}
+
+	public String getSeparator() {
+		return separator;
+	}
+
+	public void setSeparator(String separator) {
+		this.separator = separator;
+	}
+
+	public Date getLastUpdtTS() {
+		return lastUpdtTS;
+	}
+
+	public void setLastUpdtTS(Date lastUpdtTS) {
+		this.lastUpdtTS = lastUpdtTS;
+	}
+
+	public List<Query> getQueryList() {
+		return queryList;
+	}
+
+	public void setQueryList(List<Query> queryList) {
+		this.queryList = queryList;
+	}
+
+	public Set<Files> getFiles() {
+		return files;
+	}
+
+	public void setFiles(Set<Files> files) {
+		this.files = files;
+	}
+
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public ColumnMeta() {
+		super();
+		this.lastUpdtTS = new Date();
+	}
+
+	public ColumnMeta(String colNames, String separator, List<Query> queryList,
+			Set<Files> files, Project project) {
+		super();
+		this.colNames = colNames;
+		this.separator = separator;
+		this.lastUpdtTS = new Date();
+		this.queryList = queryList;
+		this.files = files;
+		this.project = project;
+	}
+
+	@Override
+	public String toString() {
+		return "ColumnMeta [idColumnMeta=" + idColumnMeta + ", colNames="
+				+ colNames + ", separator=" + separator + ", lastUpdtTS="
+				+ lastUpdtTS + ", queryList=" + queryList + ", files=" + files
+				+ ", project=" + project + "]";
+	}
+
 }
