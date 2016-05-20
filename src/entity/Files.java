@@ -11,11 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(name = "Files.finadAll", query = "SELECT f FROM Files f")
 @Table
 public class Files {
 	@Id
@@ -35,5 +37,56 @@ public class Files {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column
 	Date lastUpdtTS;
+
+	public Files() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(Long fileId) {
+		this.fileId = fileId;
+	}
+
+	public ColumnMeta getFileColumnMeta() {
+		return fileColumnMeta;
+	}
+
+	public void setFileColumnMeta(ColumnMeta fileColumnMeta) {
+		this.fileColumnMeta = fileColumnMeta;
+	}
+
+	public FileTypes getFileTypes() {
+		return fileTypes;
+	}
+
+	public void setFileTypes(FileTypes fileTypes) {
+		this.fileTypes = fileTypes;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public Date getLastUpdtTS() {
+		return lastUpdtTS;
+	}
+
+	public void setLastUpdtTS(Date lastUpdtTS) {
+		this.lastUpdtTS = lastUpdtTS;
+	}
+
+	public Files(FileTypes fileTypes, String fileName) {
+		super();
+		this.fileTypes = fileTypes;
+		this.fileName = fileName;
+	}
 
 }

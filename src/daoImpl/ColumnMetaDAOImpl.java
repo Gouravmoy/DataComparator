@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 
 import dao.ColumnMetaDao;
 import entity.ColumnMeta;
-import entity.Database;
 import exceptions.DAOException;
 import exceptions.EntityAlreadyExists;
 import exceptions.EntityNotPresent;
@@ -28,6 +27,7 @@ public class ColumnMetaDAOImpl extends GenericDAOImpl<ColumnMeta, Long>
 			}
 			save(columnMeta);
 		} catch (ReadEntityException | EntityAlreadyExists e) {
+			logger.error(e);
 			throw new DAOException("Could not Persist Column Data - "
 					+ e.getMessage(), e);
 		}
@@ -69,12 +69,12 @@ public class ColumnMetaDAOImpl extends GenericDAOImpl<ColumnMeta, Long>
 	}
 
 	@Override
-	public void removeColumnMeta(Long id) {
+	public void removeColumnMeta(Long id) throws DAOException {
 		try {
 			delete(ColumnMeta.class, id);
 		} catch (Exception err) {
 			logger.error(err);
-
+			throw new DAOException("Column Meta Could not be Removed", err);
 		}
 	}
 

@@ -17,7 +17,7 @@ public interface ColumnMetaDao {
 	public void updateColumnMeta(Long id, ColumnMeta newColumnMeta)
 			throws DAOException;
 
-	public void removeColumnMeta(Long id);
+	public void removeColumnMeta(Long id) throws DAOException;
 
 	public List<String> getColumnMetaNames() throws ReadEntityException;
 }
