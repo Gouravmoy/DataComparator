@@ -7,12 +7,15 @@ public interface GenericDAO<T, ID extends Serializable> {
 
 	public T save(T t);
 
+	@SuppressWarnings("rawtypes")
 	public List<T> readAll(Class clazz);
 
-	public T readById(ID id);
-
-	public T update(T t);
-
 	public void delete(T t);
+
+	T readById(Class<?> clazz, ID id);
+	
+	T getFirstRecord(Class<?> clazz);
+
+	T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated) ;
 
 }

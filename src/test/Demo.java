@@ -1,28 +1,18 @@
 package test;
 
-import dao.GenericDAO;
-import daoImpl.GenericDAOImpl;
-import entity.ColumnMeta;
-import entity.DBTypes;
-import entity.DataBase_CompositeID;
-import entity.Database;
+import entity.QueryEntity;
+import service.QueryService;
+import serviceImpl.QueryServiceImpl;
 
 public class Demo {
 
 	public static void main(String[] args) {
-		Database db = new Database(new DataBase_CompositeID("DBNAME", 17),
-				"sName", "U", "P", "P", DBTypes.MYSQL);
-
-		GenericDAO<Database, Long> dao = new GenericDAOImpl<Database, Long>();
-		dao.save(db);
-		dao.readAll(Database.class);
-
-		ColumnMeta columnMeta = new ColumnMeta();
-		columnMeta.setColNames("C");
-		columnMeta.setSeparator("|");
-		GenericDAO<ColumnMeta, Long> dao1 = new GenericDAOImpl<ColumnMeta, Long>();
-		dao1.save(columnMeta);
-
+		QueryService queryService = new QueryServiceImpl();
+		queryService.addQuery((long) 4, "");
+		QueryEntity q = queryService.getQueryByID((long) 1);
+		System.out.println(q);
+		q.setParamNames("ABCDEFG");
+		QueryEntity q1 = queryService.updateQueryEntity((long) 1, q);
+		System.out.println(q1);
 	}
-
 }

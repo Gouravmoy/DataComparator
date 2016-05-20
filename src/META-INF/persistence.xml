@@ -19,7 +19,6 @@
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="database" />
 			<property name="eclipselink.logging.level" value="SEVERE" />
-			<property name="show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence>

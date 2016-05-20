@@ -8,8 +8,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+
+import org.hibernate.Criteria;
+import org.hibernate.Session;
 
 import dao.GenericDAO;
 
@@ -39,26 +40,31 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 		return t;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<T> readAll(Class clazz) {
-		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> cq = cb.createQuery(clazz);
-		// return entityManager.createQuery(cq).getResultList();
-		System.out.println(this.entityManager.createQuery(
-				"select r from Database r").getResultList());
-		
-		return null;
+		entityTransaction.begin();
+		Session session = entityManager.unwrap(Session.class);
+		Criteria queryCriteria = session.createCriteria(clazz);
+		List<T> t = (List<T>) queryCriteria.list();
+		entityTransaction.commit();
+		return t;
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public T readById(ID id) {
-		return null;
+	public T readById(@SuppressWarnings("rawtypes") Class clazz, ID id) {
+		entityTransaction.begin();
+		T t = (T) entityManager.find(clazz, id);
+		entityTransaction.commit();
+		return t;
 	}
 
 	@Override
-	public T update(T t) {
-		return null;
+	public T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated) {
+		save(updated);
+		return updated;
 	}
 
 	@Override
@@ -66,4 +72,17 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public T getFirstRecord(Class<?> clazz) {
+		entityTransaction.begin();
+		Session session = entityManager.unwrap(Session.class);
+		Criteria queryCriteria = session.createCriteria(clazz);
+		queryCriteria.setFirstResult(0);
+		queryCriteria.setMaxResults(1);
+		T t = (T) queryCriteria.list().get(0);
+		entityTransaction.commit();
+		return t;
+
+	}
 }

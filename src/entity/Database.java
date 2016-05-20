@@ -1,25 +1,26 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table
-public class Database implements Serializable {
+public class Database{
 
-	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	DataBase_CompositeID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long dbId;
 
 	@Column
 	String serverName;
@@ -40,12 +41,12 @@ public class Database implements Serializable {
 	@Column
 	Date lastUpdtTS;
 
-	public DataBase_CompositeID getId() {
-		return id;
+	public Long getDbId() {
+		return dbId;
 	}
 
-	public void setId(DataBase_CompositeID id) {
-		this.id = id;
+	public void setDbId(Long dbId) {
+		this.dbId = dbId;
 	}
 
 	public String getServerName() {
@@ -96,10 +97,14 @@ public class Database implements Serializable {
 		this.lastUpdtTS = lastUpdtTS;
 	}
 
-	public Database(DataBase_CompositeID id, String serverName,
-			String userName, String password, String portNo, DBTypes dbType) {
+	public Database() {
 		super();
-		this.id = id;
+		this.lastUpdtTS = new Date();
+	}
+
+	public Database(String serverName, String userName, String password,
+			String portNo, DBTypes dbType) {
+		super();
 		this.serverName = serverName;
 		this.userName = userName;
 		this.password = password;
@@ -108,13 +113,9 @@ public class Database implements Serializable {
 		this.lastUpdtTS = new Date();
 	}
 
-	public Database() {
-		super();
-	}
-
 	@Override
 	public String toString() {
-		return "Database [id=" + id + ", serverName=" + serverName
+		return "Database [dbId=" + dbId + ", serverName=" + serverName
 				+ ", userName=" + userName + ", password=" + password
 				+ ", portNo=" + portNo + ", dbType=" + dbType + ", lastUpdtTS="
 				+ lastUpdtTS + "]";

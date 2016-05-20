@@ -23,7 +23,7 @@ public class LookUpCols {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "queryId", nullable = false)
-	Query query;
+	QueryEntity query;
 
 	@Column
 	String lookUpColName;
