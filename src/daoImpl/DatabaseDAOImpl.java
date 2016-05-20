@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import dao.DatabaseDao;
 import entity.Database;
+import exceptions.EntityAlreadyExists;
 import exceptions.PersistException;
 import exceptions.ReadEntityException;
 
@@ -18,6 +19,12 @@ public class DatabaseDAOImpl extends GenericDAOImpl<Database, Long> implements
 	@Override
 	public void saveDatabse(Database databse) throws PersistException {
 		try {
+			List<String> dbNames = getAllDBNames();
+			if (dbNames.contains(databse.getDatabaseName())) {
+				throw new EntityAlreadyExists("Database - "
+						+ databse.getDatabaseName()
+						+ " already exists in the databse");
+			}
 			save(databse);
 		} catch (Exception err) {
 			logger.error(err);

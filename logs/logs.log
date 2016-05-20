@@ -1,2 +1,38 @@
 2016-05-19 16:03:44 INFO  Main:19 - Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Thu May 19 16:03:43 IST 2016]
 2016-05-19 16:04:15 INFO  Main:19 - Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Thu May 19 16:04:15 IST 2016]
+2016-05-20 11:03:47 ERROR TestRunner:16 - Overall Result - true
+2016-05-20 11:16:46 INFO  DatabaseDAOTest:29 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:16:43 IST 2016]
+2016-05-20 11:16:54 INFO  TestRunner:16 - Overall Result - true
+2016-05-20 11:18:27 INFO  DatabaseDAOTest:29 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:18:27 IST 2016]
+2016-05-20 11:23:27 INFO  DatabaseDAOTest:30 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:23:27 IST 2016]
+2016-05-20 11:23:28 INFO  DatabaseDAOTest:42 - Test Get All DB 
+2016-05-20 11:31:08 INFO  DatabaseDAOTest:53 - Test Get All DB 
+2016-05-20 11:31:19 INFO  DatabaseDAOTest:30 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:31:17 IST 2016]
+2016-05-20 11:31:20 ERROR DatabaseDAOImpl:30 - exceptions.EntityAlreadyExists: Database - DB1 already exists in the databse
+2016-05-20 11:31:34 INFO  DatabaseDAOTest:41 - Test Get All DB 
+2016-05-20 11:31:58 INFO  DatabaseDAOTest:53 - Test Get All DB 
+2016-05-20 11:31:59 INFO  DatabaseDAOTest:30 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:31:59 IST 2016]
+2016-05-20 11:31:59 ERROR DatabaseDAOImpl:30 - exceptions.EntityAlreadyExists: Database - DB1 already exists in the databse
+2016-05-20 11:31:59 INFO  DatabaseDAOTest:41 - Test Get All DB 
+2016-05-20 11:39:39 INFO  DatabaseDAOTest:51 - Test Get All DB 
+2016-05-20 11:39:39 INFO  DatabaseDAOTest:28 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:39:39 IST 2016]
+2016-05-20 11:39:39 ERROR DatabaseDAOImpl:30 - exceptions.EntityAlreadyExists: Database - DB1 already exists in the databse
+2016-05-20 11:39:39 INFO  DatabaseDAOTest:39 - Test Get All DB 
+2016-05-20 11:44:56 INFO  DatabaseDAOTest:54 - Test Get All DB Names 
+2016-05-20 11:44:56 INFO  DatabaseDAOTest:59 - Test Get All DB [DB1, DB1]
+2016-05-20 11:44:56 INFO  DatabaseDAOTest:31 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:44:56 IST 2016]
+2016-05-20 11:44:56 ERROR DatabaseDAOImpl:30 - exceptions.EntityAlreadyExists: Database - DB1 already exists in the databse
+2016-05-20 11:44:56 INFO  DatabaseDAOTest:42 - Test Get All DB 
+2016-05-20 11:46:17 INFO  DatabaseDAOTest:57 - Test Get All DB Names 
+2016-05-20 11:46:17 INFO  DatabaseDAOTest:62 - Test Get All DB [DB1, DB1]
+2016-05-20 11:46:17 INFO  DatabaseDAOTest:31 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:46:17 IST 2016]
+2016-05-20 11:46:17 ERROR DatabaseDAOImpl:30 - exceptions.EntityAlreadyExists: Database - DB1 already exists in the databse
+2016-05-20 11:46:17 INFO  DatabaseDAOTest:42 - Test Get All DB 
+2016-05-20 11:46:18 INFO  DatabaseDAOTest:47 - Test Get All DB [Database [dbId=1, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:18:27.595], Database [dbId=101, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:23:27.993]]
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:57 - Test Get All DB Names 
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:62 - Test Get All DB [DB1, DB1]
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:31 - Test Case Inserting Entity Database [dbId=null, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=Fri May 20 11:50:43 IST 2016]
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:42 - Test Get All DB 
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:47 - Test Get All DB [Database [dbId=1, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:18:27.595], Database [dbId=101, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:23:27.993], Database [dbId=201, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:50:43.265]]
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:72 - Test Get All DB by Id 
+2016-05-20 11:50:43 INFO  DatabaseDAOTest:78 - Test Get DB with Id = 101 = Database [dbId=101, serverName=sName, userName=U, password=P, portNo=P, dbType=MYSQL, lastUpdtTS=2016-05-20 11:23:27.993]
