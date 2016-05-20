@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -18,12 +19,16 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(name = "ColumnMeta.finadAll", query = "SELECT c FROM ColumnMeta c")
 @Table
 public class ColumnMeta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long idColumnMeta;
+
+	@Column
+	String columnMetaName;
 
 	@Column
 	String colNames;
@@ -51,6 +56,14 @@ public class ColumnMeta {
 
 	public void setIdColumnMeta(Long idColumnMeta) {
 		this.idColumnMeta = idColumnMeta;
+	}
+
+	public String getColumnMetaName() {
+		return columnMetaName;
+	}
+
+	public void setColumnMetaName(String columnMetaName) {
+		this.columnMetaName = columnMetaName;
 	}
 
 	public String getColNames() {
@@ -101,28 +114,24 @@ public class ColumnMeta {
 		this.project = project;
 	}
 
-	public ColumnMeta() {
+	public ColumnMeta(String columnMetaName, String colNames, String separator) {
 		super();
-		this.lastUpdtTS = new Date();
-	}
-
-	public ColumnMeta(String colNames, String separator, List<Query> queryList,
-			Set<Files> files, Project project) {
-		super();
+		this.columnMetaName = columnMetaName;
 		this.colNames = colNames;
 		this.separator = separator;
 		this.lastUpdtTS = new Date();
-		this.queryList = queryList;
-		this.files = files;
-		this.project = project;
+	}
+
+	public ColumnMeta() {
+		super();
 	}
 
 	@Override
 	public String toString() {
-		return "ColumnMeta [idColumnMeta=" + idColumnMeta + ", colNames="
-				+ colNames + ", separator=" + separator + ", lastUpdtTS="
-				+ lastUpdtTS + ", queryList=" + queryList + ", files=" + files
-				+ ", project=" + project + "]";
+		return "ColumnMeta [idColumnMeta=" + idColumnMeta + ", columnMetaName="
+				+ columnMetaName + ", colNames=" + colNames + ", separator="
+				+ separator + ", lastUpdtTS=" + lastUpdtTS + ", queryList="
+				+ queryList + ", files=" + files + ", project=" + project + "]";
 	}
 
 }

@@ -71,8 +71,7 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 	public T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated)
 			throws EntityNotPresent {
 		if (isEntityExists(clazz, id)) {
-			delete(clazz, id);
-			save(updated);
+			entityManager.merge(updated);
 			return updated;
 		} else {
 			throw new EntityNotPresent(
@@ -84,9 +83,9 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 	@Override
 	public void delete(@SuppressWarnings("rawtypes") Class clazz, ID removeId) {
 
-		if (!isEntityExists(clazz, removeId)) {
-			entityTransaction.begin();
+		if (isEntityExists(clazz, removeId)) {
 			T old = readById(clazz, removeId);
+			entityTransaction.begin();
 			entityManager.remove(old);
 			entityTransaction.commit();
 		}
