@@ -11,6 +11,9 @@ public interface QueryDao {
 	List<QueryEntity> getAllQueries();
 
 	QueryEntity getQueryByID(Long qId);
+
+	QueryEntity updateQuery(Long qId, QueryEntity queryEntity);
 	
-	QueryEntity updateQuery(Long qId,QueryEntity queryEntity);
+	List<QueryEntity> getQueryByCMId(Long cId);
+
 }

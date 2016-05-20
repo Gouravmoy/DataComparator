@@ -119,7 +119,8 @@ public class ColumnMeta {
 
 	@Override
 	public String toString() {
-		return "ColumnMeta [idColumnMeta=" + idColumnMeta + "]";
+		return "ColumnMeta [idColumnMeta=" + idColumnMeta + ", queryList="
+				+ queryList + "]";
 	}
 
 }

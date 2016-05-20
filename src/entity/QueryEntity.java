@@ -3,28 +3,32 @@ package entity;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(name = "QueryEntity.finadAll", query = "SELECT q FROM QueryEntity q")
 @Table
 public class QueryEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long queryId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = { CascadeType.MERGE }, fetch = FetchType.LAZY)
 	@JoinColumn(name = "idColumnMeta", nullable = false)
 	ColumnMeta queryColumnMeta;
 
@@ -41,24 +45,11 @@ public class QueryEntity {
 	@Column
 	Date lastUpdtTS;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "query")
+	@OneToMany(cascade = { CascadeType.MERGE }, fetch = FetchType.EAGER, mappedBy = "query")
 	Set<LookUpCols> lookUpCols;
 
-	public QueryEntity() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public QueryEntity(ColumnMeta queryColumnMeta, QueryType queryType,
-			String paramNames, String mainQuery, Set<LookUpCols> lookUpCols) {
-		super();
-		this.queryColumnMeta = queryColumnMeta;
-		this.queryType = queryType;
-		this.paramNames = paramNames;
-		this.mainQuery = mainQuery;
-		this.lastUpdtTS = new Date();
-		this.lookUpCols = lookUpCols;
-	}
+	@Column
+	String queryName;
 
 	public Long getQueryId() {
 		return queryId;
@@ -116,33 +107,39 @@ public class QueryEntity {
 		this.lookUpCols = lookUpCols;
 	}
 
+	public String getQueryName() {
+		return queryName;
+	}
+
+	public void setQueryName(String queryName) {
+		this.queryName = queryName;
+	}
+
+	public QueryEntity(ColumnMeta queryColumnMeta, QueryType queryType,
+			String paramNames, String mainQuery, Set<LookUpCols> lookUpCols,
+			String queryName) {
+		super();
+		this.queryColumnMeta = queryColumnMeta;
+		this.queryType = queryType;
+		this.paramNames = paramNames;
+		this.mainQuery = mainQuery;
+		this.lastUpdtTS = new Date();
+		this.lookUpCols = lookUpCols;
+		this.queryName = queryName;
+	}
+
+	public QueryEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "QueryEntity [queryId=" + queryId + ", queryColumnMeta="
 				+ queryColumnMeta + ", queryType=" + queryType
 				+ ", paramNames=" + paramNames + ", mainQuery=" + mainQuery
 				+ ", lastUpdtTS=" + lastUpdtTS + ", lookUpCols=" + lookUpCols
-				+ "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((lastUpdtTS == null) ? 0 : lastUpdtTS.hashCode());
-		result = prime * result
-				+ ((lookUpCols == null) ? 0 : lookUpCols.hashCode());
-		result = prime * result
-				+ ((mainQuery == null) ? 0 : mainQuery.hashCode());
-		result = prime * result
-				+ ((paramNames == null) ? 0 : paramNames.hashCode());
-		result = prime * result
-				+ ((queryColumnMeta == null) ? 0 : queryColumnMeta.hashCode());
-		result = prime * result + ((queryId == null) ? 0 : queryId.hashCode());
-		result = prime * result
-				+ ((queryType == null) ? 0 : queryType.hashCode());
-		return result;
+				+ ", queryName=" + queryName + "]";
 	}
 
 }

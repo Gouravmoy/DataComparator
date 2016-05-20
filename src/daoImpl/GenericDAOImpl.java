@@ -8,11 +8,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 
 import dao.GenericDAO;
+import exceptions.EntityNotPresent;
 
 public class GenericDAOImpl<T, ID extends Serializable> implements
 		GenericDAO<T, ID> {
@@ -42,14 +44,10 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public List<T> readAll(Class clazz) {
-		entityTransaction.begin();
-		Session session = entityManager.unwrap(Session.class);
-		Criteria queryCriteria = session.createCriteria(clazz);
-		List<T> t = (List<T>) queryCriteria.list();
-		entityTransaction.commit();
-		return t;
-
+	public List<T> readAll(String namedQueryName, Class clazz) {
+		TypedQuery<T> query = entityManager.createNamedQuery(namedQueryName,
+				clazz);
+		return query.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -62,14 +60,35 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 	}
 
 	@Override
-	public T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated) {
-		save(updated);
-		return updated;
+	public T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated)
+			throws EntityNotPresent {
+		if (isEntityExists(clazz, id)) {
+			delete(clazz, id);
+			entityManager.merge(updated);
+			return updated;
+		} else {
+			throw new EntityNotPresent(
+					"Entity Not found, So Could not be updated");
+		}
+
 	}
 
 	@Override
-	public void delete(T t) {
+	public void delete(@SuppressWarnings("rawtypes") Class clazz, ID removeId) {
 
+		if (isEntityExists(clazz, removeId)) {
+			T old = readById(clazz, removeId);
+			entityTransaction.begin();
+			entityManager.remove(old);
+			entityTransaction.commit();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean isEntityExists(@SuppressWarnings("rawtypes") Class clazz,
+			ID id) {
+		return entityManager.find(clazz, id) != null;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -83,6 +102,22 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 		T t = (T) queryCriteria.list().get(0);
 		entityTransaction.commit();
 		return t;
+
+	}
+
+	@Override
+	public List<T> getByQuery(String queryExecute, Object[] pars,
+			@SuppressWarnings("rawtypes") Class clazz) {
+
+		entityTransaction.begin();
+		@SuppressWarnings("unchecked")
+		TypedQuery<T> query = entityManager.createQuery(queryExecute, clazz);
+		for (int i = 0; i < pars.length; i++) {
+			query.setParameter("arg" + i, pars[i]);
+		}
+		List<T> results = query.getResultList();
+		entityTransaction.commit();
+		return results;
 
 	}
 }

@@ -1,25 +1,24 @@
 package serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import service.QueryService;
 import dao.GenericDAO;
 import dao.QueryDao;
 import daoImpl.GenericDAOImpl;
 import daoImpl.QueryDaoImpl;
 import entity.ColumnMeta;
 import entity.QueryEntity;
-import service.QueryService;
 
 public class QueryServiceImpl implements QueryService {
 	QueryDao queryDao;
 	GenericDAO<ColumnMeta, Long> gD = new GenericDAOImpl<ColumnMeta, Long>();
 
 	@Override
-	public void addQuery(Long cId, String type) {
+	public void addQuery(Long cId, QueryEntity queryEntity) {
 		queryDao = new QueryDaoImpl();
-		QueryEntity queryEntity = new QueryEntity();
-		ColumnMeta c = gD.getFirstRecord(ColumnMeta.class);
-		queryEntity.setQueryColumnMeta(c);
+		queryEntity.setQueryColumnMeta(gD.readById(ColumnMeta.class, cId));
 		queryDao.addQuery(queryEntity);
 
 	}
@@ -40,6 +39,23 @@ public class QueryServiceImpl implements QueryService {
 	public QueryEntity updateQueryEntity(Long qId, QueryEntity queryEntity) {
 		queryDao = new QueryDaoImpl();
 		return queryDao.updateQuery(qId, queryEntity);
+	}
+
+	@Override
+	public ArrayList<String> getQueryByName() {
+		ArrayList<String> queryStringList = new ArrayList<String>();
+		queryDao = new QueryDaoImpl();
+		List<QueryEntity> queriesList = queryDao.getAllQueries();
+		for (QueryEntity q : queriesList) {
+			queryStringList.add(q.getQueryName());
+		}
+		return queryStringList;
+	}
+
+	@Override
+	public List<QueryEntity> getQueryByColumnId(Long cID) {
+		queryDao = new QueryDaoImpl();
+		return queryDao.getQueryByCMId(cID);
 	}
 
 }

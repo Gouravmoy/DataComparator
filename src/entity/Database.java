@@ -9,18 +9,22 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(name = "Database.finadAll", query = "SELECT d FROM Database d")
 @Table
-public class Database{
-
+public class Database {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	Long dbId;
+
+	@Column
+	String databaseName;
 
 	@Column
 	String serverName;
@@ -47,6 +51,14 @@ public class Database{
 
 	public void setDbId(Long dbId) {
 		this.dbId = dbId;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
+	}
+
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
 	}
 
 	public String getServerName() {
@@ -99,12 +111,13 @@ public class Database{
 
 	public Database() {
 		super();
-		this.lastUpdtTS = new Date();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Database(String serverName, String userName, String password,
-			String portNo, DBTypes dbType) {
+	public Database(String databaseName, String serverName, String userName,
+			String password, String portNo, DBTypes dbType) {
 		super();
+		this.databaseName = databaseName;
 		this.serverName = serverName;
 		this.userName = userName;
 		this.password = password;
@@ -115,10 +128,10 @@ public class Database{
 
 	@Override
 	public String toString() {
-		return "Database [dbId=" + dbId + ", serverName=" + serverName
-				+ ", userName=" + userName + ", password=" + password
-				+ ", portNo=" + portNo + ", dbType=" + dbType + ", lastUpdtTS="
-				+ lastUpdtTS + "]";
+		return "Database [dbId=" + dbId + ", databaseName=" + databaseName
+				+ ", serverName=" + serverName + ", userName=" + userName
+				+ ", password=" + password + ", portNo=" + portNo + ", dbType="
+				+ dbType + ", lastUpdtTS=" + lastUpdtTS + "]";
 	}
 
 }
