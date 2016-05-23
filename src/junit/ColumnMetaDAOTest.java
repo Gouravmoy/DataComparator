@@ -26,10 +26,10 @@ public class ColumnMetaDAOTest extends TestCase {
 	@Override
 	public void setUp() throws Exception {
 		super.setUp();
-		saveColumnMeta = new ColumnMeta("colMeta200", "A,B,C", "|");
-		ColumnMetaByIdColumnMeta = new ColumnMeta("colMeta201", "A,B,C", "|");
-		updateColumnMeta = new ColumnMeta("updateTest202", "P,Q,R", "|");
-		removeTest = new ColumnMeta("colMeta203", "R,E,M,O,V,E", "%");
+		saveColumnMeta = new ColumnMeta("colMeta2001", "A,B,C", "|");
+		ColumnMetaByIdColumnMeta = new ColumnMeta("colMeta2011", "A,B,C", "|");
+		updateColumnMeta = new ColumnMeta("updateTest2021", "P,Q,R", "|");
+		removeTest = new ColumnMeta("colMeta2031", "R,E,M,O,V,E", "%");
 	}
 
 	@Test

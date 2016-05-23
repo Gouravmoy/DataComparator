@@ -2,6 +2,7 @@ package entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,7 +25,7 @@ public class Files {
 	@GeneratedValue
 	Long fileId;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "idColumnMeta", nullable = false)
 	ColumnMeta fileColumnMeta;
 
@@ -40,7 +41,6 @@ public class Files {
 
 	public Files() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getFileId() {
@@ -87,6 +87,14 @@ public class Files {
 		super();
 		this.fileTypes = fileTypes;
 		this.fileName = fileName;
+		this.lastUpdtTS = new Date();
+	}
+
+	@Override
+	public String toString() {
+		return "Files [fileId=" + fileId + ", fileColumnMeta=" + fileColumnMeta
+				+ ", fileTypes=" + fileTypes + ", fileName=" + fileName
+				+ ", lastUpdtTS=" + lastUpdtTS + "]";
 	}
 
 }

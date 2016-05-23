@@ -20,6 +20,7 @@
 				value="database" />
 			<property name="eclipselink.logging.level" value="SEVERE" />
 			<property name="show_sql" value="true" />
+			<property name="format_sql" value="true"></property>
 		</properties>
 	</persistence-unit>
 </persistence>

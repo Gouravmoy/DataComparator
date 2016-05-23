@@ -68,7 +68,7 @@ public class FileDAOImpl extends GenericDAOImpl<Files, Long> implements FileDAO 
 	@Override
 	public void removeFiles(long id) throws DAOException {
 		try {
-			delete(ColumnMeta.class, id);
+			delete(Files.class, id);
 		} catch (Exception err) {
 			logger.error(err);
 			throw new DAOException("File Could not be Removed", err);

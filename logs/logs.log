@@ -167,3 +167,70 @@
 2016-05-20 19:10:24 DEBUG ColumnMetaDAOTest:114 - colMeta200
 2016-05-20 19:10:24 DEBUG ColumnMetaDAOTest:114 - updateTest202
 2016-05-20 19:10:24 DEBUG ColumnMetaDAOTest:114 - colMeta201
+2016-05-23 11:41:02 DEBUG FileDAOTest:59 - Executing Get All Files
+2016-05-23 11:51:57 DEBUG FileDAOTest:68 - Executing Get All Files
+2016-05-23 11:51:57 DEBUG FileDAOTest:70 - entity.Files@781711b7
+2016-05-23 11:51:57 DEBUG FileDAOTest:70 - entity.Files@4337afd
+2016-05-23 11:55:27 ERROR ColumnMetaDAOImpl:30 - exceptions.EntityAlreadyExists: Column Meta wit Name - colMeta3 Already Exists
+2016-05-23 11:55:27 ERROR FileDAOTest:63 - exceptions.DAOException: Could not Persist Column Data - Column Meta wit Name - colMeta3 Already Exists
+2016-05-23 11:57:17 ERROR FileDAOImpl:41 - javax.persistence.RollbackException: Error while committing the transaction
+2016-05-23 11:58:01 ERROR ColumnMetaDAOImpl:30 - exceptions.EntityAlreadyExists: Column Meta wit Name - colMeta333 Already Exists
+2016-05-23 11:58:01 ERROR FileDAOTest:62 - exceptions.DAOException: Could not Persist Column Data - Column Meta wit Name - colMeta333 Already Exists
+2016-05-23 12:02:13 ERROR ColumnMetaDAOImpl:30 - exceptions.EntityAlreadyExists: Column Meta wit Name - colMeta4 Already Exists
+2016-05-23 12:06:36 ERROR FileDAOImpl:41 - java.lang.IllegalArgumentException: id to load is required for loading
+2016-05-23 13:03:34 ERROR ColumnMetaDAOImpl:30 - exceptions.EntityAlreadyExists: Column Meta wit Name - removeColMeta27 Already Exists
+2016-05-23 13:03:34 ERROR FileDAOTest:120 - exceptions.DAOException: Could not Persist Column Data - Column Meta wit Name - removeColMeta27 Already Exists
+2016-05-23 13:05:06 ERROR FileDAOImpl:73 - javax.persistence.RollbackException: Error while committing the transaction
+2016-05-23 13:05:06 ERROR FileDAOTest:120 - exceptions.DAOException: File Could not be Removed
+2016-05-23 15:35:16 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:35:55 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:39:14 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:39:31 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:46:59 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:52:29 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File1
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File2
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File3
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File333
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File3333
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - File44
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile1
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile2
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile23
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile26
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile27
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile28
+2016-05-23 15:52:29 DEBUG FileDAOTest:83 - RemoveFile30
+2016-05-23 15:55:05 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 1 - File1
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 101 - File2
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 201 - File3
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 301 - File333
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 401 - File3333
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 501 - File44
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 601 - RemoveFile
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 701 - RemoveFile1
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 801 - RemoveFile2
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 901 - RemoveFile23
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 1001 - RemoveFile26
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 1101 - RemoveFile27
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 1201 - RemoveFile28
+2016-05-23 15:55:05 DEBUG FileDAOTest:83 - 1301 - RemoveFile30
+2016-05-23 15:57:13 DEBUG FileDAOTest:81 - Executing Get All Files
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 1 - File1 - Col Meta ID - 1201 - colMeta1
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 101 - File2 - Col Meta ID - 1301 - colMeta2
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 201 - File3 - Col Meta ID - 1401 - colMeta33
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 301 - File333 - Col Meta ID - 1501 - colMeta333
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 401 - File3333 - Col Meta ID - 1601 - colMeta3333
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 501 - File44 - Col Meta ID - 1701 - colMeta44
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 601 - RemoveFile - Col Meta ID - 1801 - removeColMeta
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 701 - RemoveFile1 - Col Meta ID - 1901 - removeColMeta1
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 801 - RemoveFile2 - Col Meta ID - 2001 - removeColMeta2
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 901 - RemoveFile23 - Col Meta ID - 2201 - removeColMeta23
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 1001 - RemoveFile26 - Col Meta ID - 2501 - removeColMeta26
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 1101 - RemoveFile27 - Col Meta ID - 2601 - removeColMeta27
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 1201 - RemoveFile28 - Col Meta ID - 2701 - removeColMeta28
+2016-05-23 15:57:13 DEBUG FileDAOTest:83 - 1301 - RemoveFile30 - Col Meta ID - 2801 - removeColMeta30
+2016-05-23 15:59:24 ERROR FileDAOImpl:73 - javax.persistence.RollbackException: Error while committing the transaction
+2016-05-23 15:59:30 ERROR FileDAOTest:123 - exceptions.DAOException: File Could not be Removed
