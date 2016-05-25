@@ -45,20 +45,20 @@ public class Database {
 	@Column
 	Date lastUpdtTS;
 
-	public String getDatabaseName() {
-		return databaseName;
-	}
-
-	public void setDatabaseName(String databaseName) {
-		this.databaseName = databaseName;
-	}
-
 	public Long getDbId() {
 		return dbId;
 	}
 
 	public void setDbId(Long dbId) {
 		this.dbId = dbId;
+	}
+
+	public String getDatabaseName() {
+		return databaseName;
+	}
+
+	public void setDatabaseName(String databaseName) {
+		this.databaseName = databaseName;
 	}
 
 	public String getServerName() {
@@ -111,7 +111,7 @@ public class Database {
 
 	public Database() {
 		super();
-		this.lastUpdtTS = new Date();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Database(String databaseName, String serverName, String userName,
@@ -128,10 +128,10 @@ public class Database {
 
 	@Override
 	public String toString() {
-		return "Database [dbId=" + dbId + ", serverName=" + serverName
-				+ ", userName=" + userName + ", password=" + password
-				+ ", portNo=" + portNo + ", dbType=" + dbType + ", lastUpdtTS="
-				+ lastUpdtTS + "]";
+		return "Database [dbId=" + dbId + ", databaseName=" + databaseName
+				+ ", serverName=" + serverName + ", userName=" + userName
+				+ ", password=" + password + ", portNo=" + portNo + ", dbType="
+				+ dbType + ", lastUpdtTS=" + lastUpdtTS + "]";
 	}
 
 }

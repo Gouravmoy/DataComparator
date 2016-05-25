@@ -24,7 +24,7 @@ import javax.persistence.TemporalType;
 public class ColumnMeta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	Long idColumnMeta;
 
 	@Column
@@ -41,7 +41,7 @@ public class ColumnMeta {
 	Date lastUpdtTS;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "queryColumnMeta")
-	List<Query> queryList;
+	List<QueryEntity> queryList;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "fileColumnMeta")
 	Set<Files> files;
@@ -90,11 +90,11 @@ public class ColumnMeta {
 		this.lastUpdtTS = lastUpdtTS;
 	}
 
-	public List<Query> getQueryList() {
+	public List<QueryEntity> getQueryList() {
 		return queryList;
 	}
 
-	public void setQueryList(List<Query> queryList) {
+	public void setQueryList(List<QueryEntity> queryList) {
 		this.queryList = queryList;
 	}
 
@@ -117,6 +117,12 @@ public class ColumnMeta {
 	public ColumnMeta(String columnMetaName, String colNames, String separator) {
 		super();
 		this.columnMetaName = columnMetaName;
+		this.lastUpdtTS = new Date();
+	}
+
+	public ColumnMeta(String colNames, String separator,
+			List<QueryEntity> queryList, Set<Files> files, Project project) {
+		super();
 		this.colNames = colNames;
 		this.separator = separator;
 		this.lastUpdtTS = new Date();
@@ -132,6 +138,7 @@ public class ColumnMeta {
 				+ columnMetaName + ", colNames=" + colNames + ", separator="
 				+ separator + ", lastUpdtTS=" + lastUpdtTS + ", queryList="
 				+ queryList + ", files=" + files + ", project=" + project + "]";
+
 	}
 
 }

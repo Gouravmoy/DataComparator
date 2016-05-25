@@ -54,7 +54,5 @@
 			<version>1.6.4</version>
 			<scope>runtime</scope>
 		</dependency>
-
 	</dependencies>
-
 </project>
