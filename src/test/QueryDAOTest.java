@@ -10,6 +10,9 @@ import dao.QueryDao;
 import daoImpl.QueryDaoImpl;
 import entity.ColumnMeta;
 import entity.QueryEntity;
+import exceptions.EntityNotPresent;
+import exceptions.PersistException;
+import exceptions.ReadEntityException;
 
 public class QueryDAOTest extends TestCase {
 	QueryEntity queryEntity;
@@ -36,7 +39,7 @@ public class QueryDAOTest extends TestCase {
 		try {
 			queryDao.addQuery(queryEntity);
 			assertTrue(true);
-		} catch (Exception e) {
+		} catch (PersistException e) {
 			assertTrue(false);
 		}
 	}
@@ -47,7 +50,7 @@ public class QueryDAOTest extends TestCase {
 		try {
 			queryEntities = queryDao.getAllQueries();
 			assertTrue(queryEntities.size() > 0);
-		} catch (Exception e) {
+		} catch (ReadEntityException e) {
 			assertTrue(false);
 		}
 
@@ -60,7 +63,7 @@ public class QueryDAOTest extends TestCase {
 		try {
 			queryEntity = queryDao.getQueryByID(Id);
 			assertNotNull(queryEntity);
-		} catch (Exception e) {
+		} catch (EntityNotPresent e) {
 			assertTrue(false);
 		}
 
@@ -70,11 +73,11 @@ public class QueryDAOTest extends TestCase {
 	public void testGetByColumnId() {
 		List<QueryEntity> queryEntities;
 		try {
-			String l = "-21474830480";
+			String l = "-2147483";
 			Long cId = Long.parseLong(l);
 			queryEntities = queryDao.getQueryByCMId(cId);
 			assertTrue(queryEntities.size() > 0);
-		} catch (Exception e) {
+		} catch (EntityNotPresent e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}

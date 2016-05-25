@@ -9,6 +9,9 @@ import daoImpl.LookUpQueryDaoImpl;
 import entity.ColumnMeta;
 import entity.LookUpCols;
 import entity.QueryEntity;
+import exceptions.EntityNotPresent;
+import exceptions.PersistException;
+import exceptions.ReadEntityException;
 import junit.framework.TestCase;
 
 public class LookUpQueryDaoTest extends TestCase {
@@ -40,18 +43,20 @@ public class LookUpQueryDaoTest extends TestCase {
 		try {
 			lookUpColumnDao.addLookUpQuery(lookUpCols);
 			assertTrue(true);
-		} catch (Exception e) {
+		} catch (PersistException e) {
 			assertTrue(false);
+			e.printStackTrace();
 		}
+
 	}
 
 	@Test
-	public void testgetAllDatabaseInDB() {
+	public void testgetAllQueryInDB() {
 		List<LookUpCols> lookUpCols;
 		try {
 			lookUpCols = lookUpColumnDao.getAllLookUpQueries();
 			assertTrue(lookUpCols.size() > 0);
-		} catch (Exception e) {
+		} catch (ReadEntityException e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}
@@ -59,13 +64,13 @@ public class LookUpQueryDaoTest extends TestCase {
 	}
 
 	@Test
-	public void testgetDatabaseByid() {
+	public void testgetQueryByID() {
 		LookUpCols lookUpCols;
 		Long Id = new Long(601);
 		try {
 			lookUpCols = lookUpColumnDao.getLookUpQuriebyID(Id);
 			assertNotNull(lookUpCols);
-		} catch (Exception e) {
+		} catch (EntityNotPresent e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}

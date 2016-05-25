@@ -2,44 +2,62 @@ package daoImpl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
+
 import dao.QueryDao;
 import entity.QueryEntity;
 import exceptions.EntityNotPresent;
+import exceptions.PersistException;
+import exceptions.ReadEntityException;
 
 public class QueryDaoImpl extends GenericDAOImpl<QueryEntity, Long> implements
 		QueryDao {
 
 	@Override
-	public void addQuery(QueryEntity queryEntity) {
-		save(queryEntity);
+	public void addQuery(QueryEntity queryEntity) throws PersistException {
+		try {
+			save(queryEntity);
+		} catch (PersistenceException p) {
+			throw new PersistException();
+		}
 	}
 
 	@Override
-	public List<QueryEntity> getAllQueries() {
-		return readAll("QueryEntity.finadAll", QueryEntity.class);
+	public List<QueryEntity> getAllQueries() throws ReadEntityException {
+		try {
+			return readAll("QueryEntity.finadAll", QueryEntity.class);
+		} catch (Exception e) {
+			throw new ReadEntityException();
+		}
 	}
 
 	@Override
-	public QueryEntity getQueryByID(Long qId) {
-
-		return readById(QueryEntity.class, qId);
+	public QueryEntity getQueryByID(Long qId) throws EntityNotPresent {
+		try {
+			return readById(QueryEntity.class, qId);
+		} catch (Exception e) {
+			throw new EntityNotPresent();
+		}
 	}
 
 	@Override
-	public QueryEntity updateQuery(Long qId, QueryEntity queryEntity) {
+	public QueryEntity updateQuery(Long qId, QueryEntity queryEntity)
+			throws EntityNotPresent {
 		try {
 			return update(QueryEntity.class, qId, queryEntity);
-		} catch (EntityNotPresent e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			throw new EntityNotPresent();
 		}
-		return queryEntity;
 	}
 
 	@Override
-	public List<QueryEntity> getQueryByCMId(Long cId) {
-		String queryExecute = "SELECT q FROM QueryEntity q where q.queryColumnMeta.idColumnMeta=:arg0";
-		Object[] pars = { cId };
-		return getByQuery(queryExecute, pars, QueryEntity.class);
+	public List<QueryEntity> getQueryByCMId(Long cId) throws EntityNotPresent {
+		try {
+			String queryExecute = "SELECT q FROM QueryEntity q where q.queryColumnMeta.idColumnMeta=:arg0";
+			Object[] pars = { cId };
+			return getByQuery(queryExecute, pars, QueryEntity.class);
+		} catch (Exception e) {
+			throw new EntityNotPresent();
+		}
 	}
 }
