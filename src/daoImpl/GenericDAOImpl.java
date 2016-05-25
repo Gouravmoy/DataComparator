@@ -63,7 +63,6 @@ public class GenericDAOImpl<T, ID extends Serializable> implements
 	public T update(@SuppressWarnings("rawtypes") Class clazz, ID id, T updated)
 			throws EntityNotPresent {
 		if (isEntityExists(clazz, id)) {
-			delete(clazz, id);
 			entityManager.merge(updated);
 			return updated;
 		} else {

@@ -1,8 +1,15 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
+Mon May 23 16:13:00 IST 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-dd35-eebe-00000675a188 
+on database directory C:\WorkSpaces\DataComparator2.0\DataComparator\simpleDb with class loader sun.misc.Launcher$AppClassLoader@2b193f2d 
+Loaded from file:/C:/Users/m1026335/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+=======
 Mon May 23 14:15:24 IST 2016:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-0154-dcca-4522-0000068b4838 
 on database directory C:\Workspaces\DataComparator\DataComparator\simpleDB with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/Users/M1026352/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+>>>>>>> refs/heads/master
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_92-b14
 user.dir=C:\Workspaces\DataComparator\DataComparator
