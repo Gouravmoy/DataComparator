@@ -19,9 +19,11 @@ public interface GenericDAO<T, ID extends Serializable> {
 
 	public void delete(@SuppressWarnings("rawtypes") Class clazz, ID removeId);
 
-	public List<T> getByQuery(String query);
+	public List<T> getByQuery(String query, Object[] pars, @SuppressWarnings("rawtypes") Class clzz);
 
 	public boolean isEntityExists(@SuppressWarnings("rawtypes") Class clazz,
 			ID id);
+
+	T getFirstRecord(Class<?> clazz);
 
 }
